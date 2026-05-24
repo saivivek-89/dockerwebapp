@@ -1,7 +1,7 @@
 version: "3"
 services:
   devopsdb:
-    image: shaikmustafa/harikanew:dbimage
+    image: dockersai891/bigproject:db
     ports:
       - "3306:3306"
     deploy:
@@ -10,7 +10,7 @@ services:
       - dbnetwork
 
   application:
-    image: shaikmustafa/harikanew:appimage
+    image: dockersai891/bigproject:myapp
     ports:
       - "1111:8080"
     depends_on:
