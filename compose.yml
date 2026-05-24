@@ -4,6 +4,8 @@ services:
     image: dockersai891/bigproject:db
     ports:
       - "3306:3306"
+    deploy:
+      replicas: 3
   
     networks:
       - dbnetwork
@@ -14,6 +16,8 @@ services:
       - "1111:8080"
     depends_on:
       - devopsdb
+    deploy:
+      replicas: 3
 
     networks:
       - dbnetwork
