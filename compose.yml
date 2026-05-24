@@ -1,14 +1,25 @@
----
 version: "3"
 services:
- devopsdb:
-   image: shaikmustafa/harikanew:dbimage
-   ports:
-     - "3306:3306"
+  devopsdb:
+    image: shaikmustafa/harikanew:dbimage
+    ports:
+      - "3306:3306"
+    deploy:
+      replicas: 2
+    networks:
+      - dbnetwork
 
- application:
-   image: shaikmustafa/harikanew:appimage
-   ports:
-     - "1111:8080"
-   depends_on:
-     - "devopsdb"
+  application:
+    image: shaikmustafa/harikanew:appimage
+    ports:
+      - "1111:8080"
+    depends_on:
+      - devopsdb
+    deploy:
+      replicas: 2
+    networks:
+      - dbnetwork
+
+networks:
+  dbnetwork:
+    driver: overlay
